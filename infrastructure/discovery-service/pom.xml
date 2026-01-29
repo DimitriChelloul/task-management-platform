@@ -1,0 +1,30 @@
+<project>
+<modelVersion>4.0.0</modelVersion>
+
+<parent>
+<groupId>org.dimitri</groupId>
+<artifactId>task-management-platform</artifactId>
+<version>1.0.0-SNAPSHOT</version>
+</parent>
+
+<artifactId>discovery-service</artifactId>
+
+<dependencies>
+<!-- ✅ LE BON -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+</dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+<!-- optionnel -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+</dependencies>
+        </project>

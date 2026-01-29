@@ -1,0 +1,16 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: discovery-service
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+# (optionnel) si le conflit persiste malgré tout :
+# spring:
+#   main:
+#     allow-bean-definition-overriding: true
