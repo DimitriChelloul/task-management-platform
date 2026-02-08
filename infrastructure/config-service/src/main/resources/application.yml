@@ -11,3 +11,7 @@ spring:
       server:
         native:
           search-locations: file:./config-repo
+
+  config:
+    import: optional:configserver:http://localhost:8888
+

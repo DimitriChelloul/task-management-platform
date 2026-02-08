@@ -10,7 +10,8 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
 
-# (optionnel) si le conflit persiste malgré tout :
-# spring:
-#   main:
-#     allow-bean-definition-overriding: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
