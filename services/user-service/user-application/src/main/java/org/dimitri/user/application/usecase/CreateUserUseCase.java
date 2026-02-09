@@ -1,8 +1,7 @@
-package usecase;
+package org.dimitri.user.application.usecase;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
-import ports.OutboxWritePort;
-import ports.UserWritePort;
+import org.dimitri.user.application.ports.OutboxWritePort;
+import org.dimitri.user.application.ports.UserWritePort;
 import org.dimitri.user.domain.OutboxEvent;
 import org.dimitri.user.domain.User;
 
@@ -13,6 +12,7 @@ public class CreateUserUseCase {
 
     private final UserWritePort userWritePort;
     private final OutboxWritePort outboxWritePort;
+    
 
     public CreateUserUseCase(UserWritePort userWritePort, OutboxWritePort outboxWritePort) {
         this.userWritePort = userWritePort;
@@ -23,22 +23,30 @@ public class CreateUserUseCase {
         UUID userId = UUID.randomUUID();
         Instant now = Instant.now();
 
-        SecurityProperties.User user = new User(userId, email, now);
+        User user = new User(userId, email, now);
 
         // payload minimal JSON (simple et efficace)
         String payload = """
           {"userId":"%s","email":"%s","createdAt":"%s"}
         """.formatted(userId, email, now.toString()).trim();
 
+        String payloadJson = """
+  {"userId":"%s","email":"%s","createdAt":"%s"}
+""".formatted(userId, email, now.toString()).trim();
+
         OutboxEvent evt = new OutboxEvent(
                 UUID.randomUUID(),
-                "User",
-                userId,
-                "UserCreated",
-                payload,
-                "PENDING",
-                now
+                "USER",
+                userId.toString(),
+                "USER_CREATED",
+                payloadJson,
+                OutboxEvent.Status.PENDING,
+                now,
+                0,
+                now,
+                null
         );
+
 
         userWritePort.save(user);
         outboxWritePort.save(evt);

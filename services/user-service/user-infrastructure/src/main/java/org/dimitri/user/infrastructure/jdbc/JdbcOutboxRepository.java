@@ -1,9 +1,10 @@
-package jdbc;
+package org.dimitri.user.infrastructure.jdbc;
 
 import org.dimitri.user.domain.OutboxEvent;
-import ports.OutboxReadPort;
-import ports.OutboxWritePort;
-import persistence.OutboxRepository;
+import org.dimitri.user.application.ports.OutboxReadPort;
+import org.dimitri.user.application.ports.OutboxWritePort;
+import org.dimitri.user.infrastructure.persistence.OutboxRepository;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -18,6 +19,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
+@Profile("jdbc")
 public class JdbcOutboxRepository implements OutboxRepository, OutboxWritePort, OutboxReadPort {
 
     private final JdbcTemplate jdbc;
@@ -61,6 +63,11 @@ public class JdbcOutboxRepository implements OutboxRepository, OutboxWritePort, 
                 event.nextAttemptAt() == null ? null : Timestamp.from(event.nextAttemptAt()),
                 event.lastError()
         );
+    }
+
+    @Override
+    public List<OutboxEvent> fetchBatch(int batchSize) {
+        return List.of();
     }
 
     /**

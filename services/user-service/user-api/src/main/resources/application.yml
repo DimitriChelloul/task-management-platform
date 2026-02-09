@@ -7,8 +7,15 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     producer:
-          key-serializer: org.apache.kafka.common.serialization.StringSerializer
-          value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tmp
+    username: tmp
+    password: tmp
+    driver-class-name: org.postgresql.Driver
+  profiles:
+    active: dev
 
 eureka:
   client:
@@ -18,22 +25,9 @@ eureka:
 jwt:
   secret: "0123456789abcdef0123456789abcdef"
 
-
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
 kafka:
   topics:
     userCreated: user.created
-
-    datasource:
-      url: jdbc:postgresql://localhost:5432/tmp
-      username: tmp
-      password: tmp
-      driver-class-name: org.postgresql.Driver
 
 outbox:
   poll-interval-ms: 2000

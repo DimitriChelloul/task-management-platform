@@ -1,4 +1,4 @@
-package persistence;
+package org.dimitri.user.infrastructure.persistence;
 
 import org.dimitri.user.domain.User;
 

@@ -5,64 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="325d9c2e-da64-4050-b113-28c8e470173d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docker-compose.db.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.kafka.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/init/01_user_service.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker/init/02-user-outbox.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/api-gateway/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/api-gateway/src/main/java/org/dimitri/gateway/ApiGatewayApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/api-gateway/src/main/java/org/dimitri/gateway/config/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/api-gateway/src/main/java/org/dimitri/gateway/security/JwtWebFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/infrastructure/api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/src/main/java/org/dimitri/user/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/KafkaTopicsProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/UserServiceApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/controller/KafkaTestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/events/UserCreatedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/kafka/UserEventProducer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/security/JwtService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/ports/OutboxReadPort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/ports/OutboxWritePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/ports/UserWritePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/usecase/CreateUserUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-domain/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-domain/src/main/java/org/dimitri/user/domain/OutboxEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-domain/src/main/java/org/dimitri/user/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/jdbc/JdbcOutboxRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/jdbc/JdbcUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/persistence/OutboxRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/persistence/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-repo/user-service.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config-repo/user-service.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/config-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/config-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/config-service/src/main/resources/ConfigServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/config-service/src/main/java/org/dimitri/config/ConfigServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/config-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/config-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/discovery-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/discovery-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/discovery-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/discovery-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/services/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/adapters/in/UserCommandAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/outbox/OutboxScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/config/UserUseCaseConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/infrastructure/memory/InMemoryOutboxWriteAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/infrastructure/memory/InMemoryUserWriteAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/infrastructure/outbox/JdbcOutboxReadAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/org/dimitri/user/application/ports/UserWritePort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/org/dimitri/user/application/service/UserAppService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/org/dimitri/user/application/service/UserCommandPort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/user-service/user-domain/src/main/java/org/dimitri/user/domain/port/in/UserCommandPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infrastructure/api-gateway/src/main/java/org/dimitri/gateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/infrastructure/api-gateway/src/main/java/org/dimitri/gateway/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shared/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shared/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/src/main/java/org/dimitri/user/UserServiceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-api/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/UserServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/java/org/dimitri/user/api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-api/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/ports/OutboxReadPort.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/org/dimitri/user/application/ports/OutboxReadPort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/ports/OutboxWritePort.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/org/dimitri/user/application/ports/OutboxWritePort.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/ports/UserWritePort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/usecase/CreateUserUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-application/src/main/java/org/dimitri/user/application/usecase/CreateUserUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-domain/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-domain/src/main/java/org/dimitri/user/domain/OutboxEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-domain/src/main/java/org/dimitri/user/domain/OutboxEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/jdbc/JdbcOutboxRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/org/dimitri/user/infrastructure/jdbc/JdbcOutboxRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/jdbc/JdbcUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/org/dimitri/user/infrastructure/jdbc/JdbcUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/persistence/OutboxRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/org/dimitri/user/infrastructure/persistence/OutboxRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/persistence/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/user-service/user-infrastructure/src/main/java/org/dimitri/user/infrastructure/persistence/UserRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="63" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -86,6 +70,13 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
@@ -95,49 +86,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.task-management-platform [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.task-management-platform [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.user-service [clean].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.ConfigServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.DiscoveryServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserServiceApplication .executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Utilisateur/IdeaProjects/task-management-platform/services/user-service/user-api/src/main/java/org/dimitri/user/api&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Utilisateur/IdeaProjects/task-management-platform/services/user-service/user-infrastructure/src/main/java/org/dimitri/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.task-management-platform [clean].executor": "Run",
+    "Maven.task-management-platform [install].executor": "Run",
+    "Maven.user-api [test].executor": "Run",
+    "Maven.user-service [clean].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.ApiGatewayApplication.executor": "Run",
+    "Spring Boot.ConfigServiceApplication.executor": "Run",
+    "Spring Boot.DiscoveryServiceApplication.executor": "Run",
+    "Spring Boot.UserServiceApplication (2).executor": "Run",
+    "Spring Boot.UserServiceApplication .executor": "Run",
+    "Spring Boot.UserServiceApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Utilisateur/IdeaProjects/task-management-platform/services/user-service/user-api/src/main/java/org/dimitri/user/api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/Utilisateur/IdeaProjects/task-management-platform/services/user-service/user-infrastructure/src/main/java/org/dimitri/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.dimitri.user.application.service" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Utilisateur\IdeaProjects\task-management-platform\services\user-service\user-api\src\main\java\org\dimitri\user\api" />
       <recent name="C:\Users\Utilisateur\IdeaProjects\task-management-platform\services\user-service\user-api\src\main\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Utilisateur\IdeaProjects\task-management-platform\services\user-service\user-api\src\main\java" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="in" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -149,17 +153,6 @@
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
-    <option name="hiddenConfigurations">
-      <map>
-        <entry key="SpringBootApplicationConfigurationType">
-          <value>
-            <set>
-              <option value="UserServiceApplication (1)" />
-            </set>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="configurationStatuses">
       <map>
         <entry key="SpringBootApplicationConfigurationType">
@@ -168,14 +161,14 @@
               <entry key="ApiGatewayApplication" value="STOPPED" />
               <entry key="ConfigServiceApplication" value="STOPPED" />
               <entry key="DiscoveryServiceApplication" value="STOPPED" />
-              <entry key="UserServiceApplication" value="STOPPED" />
+              <entry key="UserServiceApplication (2)" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceApplication">
+  <component name="RunManager" selected="Spring Boot.UserServiceApplication (2)">
     <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.dimitri.gateway.ApiGatewayApplication" />
@@ -209,24 +202,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <configuration name="UserServiceApplication (2)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="user-api" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.dimitri.user.api.UserServiceApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <module name="user-api" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="org.dimitri.user.api.UserServiceApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.dimitri.user.UserServiceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Spring Boot.UserServiceApplication (2)" />
       <item itemvalue="Spring Boot.ApiGatewayApplication" />
-      <item itemvalue="Spring Boot.UserServiceApplication" />
-      <item itemvalue="Spring Boot.UserServiceApplication (1)" />
       <item itemvalue="Spring Boot.ConfigServiceApplication" />
       <item itemvalue="Spring Boot.DiscoveryServiceApplication" />
     </list>
@@ -260,7 +245,10 @@
       <workItem from="1770215646961" duration="6358000" />
       <workItem from="1770441133888" duration="766000" />
       <workItem from="1770442062293" duration="692000" />
-      <workItem from="1770443367222" duration="7412000" />
+      <workItem from="1770443367222" duration="10265000" />
+      <workItem from="1770560063801" duration="1348000" />
+      <workItem from="1770561428191" duration="3168000" />
+      <workItem from="1770564620183" duration="7369000" />
     </task>
     <servers />
   </component>

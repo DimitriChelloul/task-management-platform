@@ -1,14 +1,17 @@
-package jdbc;
+package org.dimitri.user.infrastructure.jdbc;
 
 import org.dimitri.user.domain.User;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import persistence.UserRepository;
-import ports.UserWritePort;
+import org.dimitri.user.infrastructure.persistence.UserRepository;
+import org.dimitri.user.application.ports.UserWritePort;
 
 import java.sql.Timestamp;
 
 @Repository
+@Profile("jdbc")
+
 public class JdbcUserRepository
         implements UserRepository, UserWritePort {
 
