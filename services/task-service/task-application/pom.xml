@@ -7,19 +7,19 @@
 
     <parent>
         <groupId>org.dimitri</groupId>
-        <artifactId>task-management-platform</artifactId>
+        <artifactId>task-service</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>services</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>task-application</artifactId>
 
-
-    <modules>
-      <module>user-service</module>
-      <module>task-service</module>
-    </modules>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.dimitri</groupId>
+            <artifactId>task-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
