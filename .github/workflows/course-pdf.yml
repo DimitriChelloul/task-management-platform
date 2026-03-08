@@ -29,7 +29,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Generate HTML from Markdown
+      - name: Concatenate course-pack markdown into single handbook
+        run: |
+          # Order matters: README, syllabus, setup, architecture, lab, solutions, security, ci
+          mkdir -p docs
+          cat \
+            docs/course-pack/README.md \
+            docs/course-pack/syllabus.md \
+            docs/course-pack/lecture_setup.md \
+            docs/course-pack/lecture_architecture.md \
+            docs/course-pack/lab1_create_api.md \
+            docs/course-pack/solutions/lab1_solution.md \
+            docs/course-pack/security.md \
+            docs/course-pack/ci_cd.md \
+            > docs/course-handbook.md
+
+      - name: Generate HTML from concatenated Markdown
         run: |
           pandoc docs/course-handbook.md -s -o docs/course-handbook.html
 
