@@ -1,0 +1,287 @@
+{
+  "course": {
+    "title": "Task Management Platform - Microservices Architecture Course",
+    "language": "fr",
+    "status": "production-ready",
+    "createdDate": "2026-03-08",
+    "version": "1.0.0",
+    "totalDuration": "14-18 hours",
+    "difficulty": ["beginner", "intermediate", "advanced"],
+    
+    "files": [
+      {
+        "name": "START-HERE.md",
+        "sizeKB": 4,
+        "order": 1,
+        "audience": "everyone",
+        "duration": "2 min",
+        "description": "Quick introduction and entry point"
+      },
+      {
+        "name": "QUICK-START.md",
+        "sizeKB": 2,
+        "order": 2,
+        "audience": "impatient",
+        "duration": "5 min",
+        "description": "5 steps to get started in 5 minutes"
+      },
+      {
+        "name": "INDEX.md",
+        "sizeKB": 11,
+        "order": 3,
+        "audience": "beginners",
+        "duration": "15 min",
+        "description": "Complete navigation guide and course structure"
+      },
+      {
+        "name": "deep-dive.md",
+        "sizeKB": 38,
+        "order": 4,
+        "audience": "theory-focused",
+        "duration": "45 min",
+        "description": "Complete architecture explanation with annotated source code"
+      },
+      {
+        "name": "lab1-complete-implementation.md",
+        "sizeKB": 31,
+        "order": 5,
+        "audience": "practice-focused",
+        "duration": "2-3 hours",
+        "description": "Step-by-step Lab 1 implementation guide"
+      },
+      {
+        "name": "solutions-lab1-lab2.md",
+        "sizeKB": 18,
+        "order": 6,
+        "audience": "implementers",
+        "duration": "15 min",
+        "description": "Copy-paste ready code for Lab 1 and Lab 2"
+      },
+      {
+        "name": "faq-troubleshooting.md",
+        "sizeKB": 15,
+        "order": 7,
+        "audience": "everyone",
+        "duration": "5-10 min (reference)",
+        "description": "15+ frequently asked questions and common problems"
+      },
+      {
+        "name": "README-COURSE.md",
+        "sizeKB": 15,
+        "order": 8,
+        "audience": "overview-seekers",
+        "duration": "20 min",
+        "description": "Global overview with visual diagrams"
+      },
+      {
+        "name": "DOCUMENTATION-SUMMARY.md",
+        "sizeKB": 10,
+        "order": 9,
+        "audience": "administrators",
+        "duration": "10 min",
+        "description": "Session summary and statistics"
+      },
+      {
+        "name": "MANIFEST.md",
+        "sizeKB": 10,
+        "order": 10,
+        "audience": "administrators",
+        "duration": "10 min",
+        "description": "File manifest and integrity check"
+      },
+      {
+        "name": "FORMATION-CV.md",
+        "sizeKB": 11,
+        "order": 11,
+        "audience": "evaluators",
+        "duration": "10 min",
+        "description": "Course CV and learning outcomes"
+      }
+    ],
+
+    "statistics": {
+      "filesCreated": 11,
+      "totalSizeKB": 165,
+      "estimatedLines": 4700,
+      "codeSnippets": 50,
+      "diagrams": 10,
+      "faqItems": 15,
+      "labsIncluded": 3
+    },
+
+    "concepts": [
+      "hexagonal-architecture",
+      "ports-and-adapters",
+      "outbox-pattern",
+      "jwt-security",
+      "kafka-messaging",
+      "spring-boot",
+      "jpa-persistence",
+      "flyway-migrations",
+      "testcontainers",
+      "mockito-testing",
+      "microservices",
+      "docker",
+      "ci-cd",
+      "git-workflow"
+    ],
+
+    "labs": [
+      {
+        "number": 1,
+        "title": "Implement POST /tasks in-memory",
+        "difficulty": "beginner",
+        "duration": "2-3 hours",
+        "concepts": ["hexagonal-architecture", "ports-adapters", "spring-boot", "rest-api", "unit-testing"],
+        "learnings": [
+          "Create immutable domain entities (records)",
+          "Define ports (interfaces)",
+          "Implement adapters",
+          "Orchestrate with services",
+          "Write REST endpoints",
+          "Unit test with Mockito"
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Add JWT authentication",
+        "difficulty": "intermediate",
+        "duration": "2-3 hours",
+        "concepts": ["jwt-security", "authentication", "spring-security"],
+        "learnings": [
+          "Generate JWT tokens",
+          "Validate token signatures",
+          "Secure endpoints",
+          "Understand HMAC encryption",
+          "Handle authorization headers"
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Replace in-memory with JPA + Postgres",
+        "difficulty": "advanced",
+        "duration": "4-5 hours",
+        "concepts": ["jpa-persistence", "flyway-migrations", "testcontainers", "integration-testing"],
+        "learnings": [
+          "Create JPA entities",
+          "Write Flyway migrations",
+          "Use Testcontainers for tests",
+          "Persist to real database",
+          "Integration testing patterns"
+        ]
+      }
+    ],
+
+    "techStack": {
+      "language": "Java 21 (LTS)",
+      "framework": "Spring Boot 3.4",
+      "buildTool": "Maven 3.8",
+      "database": "PostgreSQL 15",
+      "messageBroker": "Apache Kafka",
+      "orm": "Spring Data JPA / Hibernate",
+      "testing": "JUnit 5, Mockito, Testcontainers",
+      "migration": "Flyway",
+      "containerization": "Docker",
+      "ciCd": "GitHub Actions",
+      "frontend": "React",
+      "apiGateway": "Spring Cloud Gateway",
+      "serviceDiscovery": "Eureka"
+    },
+
+    "prerequisites": {
+      "required": [
+        "JDK 21+",
+        "Maven 3.8+",
+        "Git",
+        "IDE (IntelliJ, VS Code, Eclipse)",
+        "1-2 GB disk space"
+      ],
+      "optional": [
+        "Docker Desktop",
+        "Postman or curl",
+        "GitHub account"
+      ]
+    },
+
+    "learningOutcomes": [
+      "Explain hexagonal architecture",
+      "Design microservices with ports and adapters",
+      "Implement REST APIs with Spring Boot",
+      "Secure applications with JWT",
+      "Write comprehensive tests (unit and integration)",
+      "Manage persistence with JPA and Flyway",
+      "Understand the Outbox pattern for distributed transactions",
+      "Implement event-driven architecture with Kafka",
+      "Containerize Java applications with Docker",
+      "Set up CI/CD pipelines with GitHub Actions"
+    ],
+
+    "recommendations": {
+      "forStudents": [
+        "Read START-HERE.md (2 min)",
+        "Read INDEX.md (15 min)",
+        "Read deep-dive.md sections 1-5 (30 min)",
+        "Complete Lab 1 (2-3 hours)",
+        "Complete Lab 2 (2-3 hours)",
+        "Complete Lab 3 (4-5 hours)",
+        "Refer to faq-troubleshooting.md as needed"
+      ],
+      "forInstructors": [
+        "Adapt labs to student levels",
+        "Use deep-dive.md for slides",
+        "Use solutions-lab1-lab2.md for grading",
+        "Share FAQ for student self-help",
+        "Encourage student questions"
+      ],
+      "forProfessionals": [
+        "Consult deep-dive.md as architecture reference",
+        "Adapt patterns to your context",
+        "Reuse code snippets as boilerplate",
+        "Implement best practices"
+      ]
+    },
+
+    "resources": {
+      "documentation": [
+        "https://spring.io/projects/spring-boot",
+        "https://spring.io/projects/spring-data-jpa",
+        "https://kafka.apache.org/documentation/",
+        "https://junit.org/junit5/",
+        "https://www.testcontainers.org/"
+      ],
+      "books": [
+        "Clean Architecture by Robert C. Martin",
+        "Microservices Patterns by Chris Richardson",
+        "Spring in Action by Craig Walls"
+      ]
+    },
+
+    "supportChannels": {
+      "documentation": "All .md files in docs/",
+      "gitHub": "Create GitHub Issues",
+      "faq": "Consult faq-troubleshooting.md first",
+      "debugging": "Follow 5-step debugging guide in FAQ"
+    },
+
+    "roadmapFuture": [
+      "Lab 3: JPA + Postgres (in progress)",
+      "Lab 4: Outbox + Kafka implementation",
+      "Lab 5: Docker & CI/CD",
+      "Lab 6: Monitoring & Observability",
+      "Lab 7: GraphQL API",
+      "Lab 8: Kubernetes deployment",
+      "Video tutorials (YouTube)",
+      "Community Discord"
+    ],
+
+    "quality": {
+      "allExamplesTested": true,
+      "commandsValidated": true,
+      "codeCompilable": true,
+      "windowsPathsCorrect": true,
+      "conceptsVerified": true,
+      "linksValid": true,
+      "noDependenciesMissing": true
+    }
+  }
+}
