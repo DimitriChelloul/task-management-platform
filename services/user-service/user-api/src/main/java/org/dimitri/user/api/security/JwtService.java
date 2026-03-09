@@ -16,25 +16,32 @@ import java.util.Map;
 public class JwtService {
 
     private final SecretKey key;
+    private final String issuer;
+    private final long expirationMinutes;
 
-    public JwtService(@Value("${jwt.secret:}") String secret) {
+    public JwtService(
+            @Value("${jwt.secret:}") String secret,
+            @Value("${jwt.issuer:task-management}") String issuer,
+            @Value("${jwt.expiration-minutes:60}") long expirationMinutes
+    ) {
         if (secret == null || secret.length() < 32) {
-            throw new IllegalStateException("jwt.secret manquant ou trop court (min 32 caractères)");
+            throw new IllegalStateException("jwt.secret manquant ou trop court (min 32 caracteres)");
         }
         this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+        this.issuer = issuer;
+        this.expirationMinutes = expirationMinutes;
     }
-
 
     public String generateToken(String userId) {
         Instant now = Instant.now();
 
         return Jwts.builder()
                 .subject(userId)
+                .issuer(issuer)
                 .issuedAt(Date.from(now))
-                .expiration(Date.from(now.plusSeconds(3600)))
+                .expiration(Date.from(now.plusSeconds(expirationMinutes * 60)))
                 .claims(Map.of("roles", List.of("USER")))
                 .signWith(key)
                 .compact();
     }
 }
-

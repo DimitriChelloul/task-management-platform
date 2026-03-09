@@ -6,15 +6,27 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-          routes:
-            - id: user-service
-              uri: lb://USER-SERVICE
-              predicates:
-                - Path=/users/**
-            - id: task-service
-              uri: lb://TASK-SERVICE
-              predicates:
-                - Path=/tasks/**
+      routes:
+        - id: auth-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/auth/**
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/users/**
+        - id: kafka-test-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/kafka/**
+        - id: task-service
+          uri: lb://TASK-SERVICE
+          predicates:
+            - Path=/tasks/**
+
+jwt:
+  secret: "0123456789abcdef0123456789abcdef"
+  issuer: "task-management"
 
 eureka:
   client:

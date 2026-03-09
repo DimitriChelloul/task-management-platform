@@ -24,6 +24,8 @@ eureka:
 
 jwt:
   secret: "0123456789abcdef0123456789abcdef"
+  issuer: "task-management"
+  expiration-minutes: 120
 
 kafka:
   topics:
