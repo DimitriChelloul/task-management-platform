@@ -6,6 +6,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -40,6 +41,9 @@ public class JwtWebFilter implements WebFilter {
 
         // Public routes.
         if (path.startsWith("/auth") || path.startsWith("/actuator")) {
+            return chain.filter(exchange);
+        }
+        if (HttpMethod.POST.equals(exchange.getRequest().getMethod()) && "/users".equals(path)) {
             return chain.filter(exchange);
         }
 

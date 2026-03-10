@@ -1,48 +1,51 @@
-﻿import React, { useEffect, useState } from "react";
-import { fetchTasks, createTask, updateTask, deleteTask } from "../api/tasks";
+import React, { useEffect, useState } from "react";
+import { fetchTasks } from "../api/tasks";
 
 export default function Tasks() {
   const [tasks, setTasks] = useState([]);
-  const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  useEffect(() => { load(); }, []);
+  useEffect(() => {
+    load();
+  }, []);
 
   async function load() {
-    try { setTasks(await fetchTasks()); } catch (e) { console.error(e); }
-  }
-
-  async function add() {
-    if (!title.trim()) return;
-    await createTask({ title, description: "", done: false });
-    setTitle("");
-    await load();
-  }
-
-  async function toggle(task) {
-    await updateTask(task.id, { ...task, done: !task.done });
-    await load();
-  }
-
-  async function remove(id) {
-    await deleteTask(id);
-    await load();
+    setLoading(true);
+    setError("");
+    try {
+      const data = await fetchTasks();
+      setTasks(Array.isArray(data) ? data : []);
+    } catch (e) {
+      setError(e.message || "Could not load tasks");
+      setTasks([]);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
-    <div>
-      <div style={{ marginBottom: 12 }}>
-        <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Nouvelle tâche" />
-        <button onClick={add} style={{ marginLeft: 8 }}>Ajouter</button>
-      </div>
-      <ul>
-        {tasks.map(t => (
-          <li key={t.id} style={{ marginBottom: 6 }}>
-            <input type="checkbox" checked={t.done} onChange={() => toggle(t)} />
-            <span style={{ marginLeft: 8 }}>{t.title}</span>
-            <button onClick={() => remove(t.id)} style={{ marginLeft: 12 }}>Supprimer</button>
+    <section className="card">
+      <h2>Tasks</h2>
+      <p className="muted">Reads tasks from /tasks with Bearer token.</p>
+      <button onClick={load} disabled={loading}>
+        {loading ? "Loading..." : "Refresh"}
+      </button>
+
+      {error && <p className="error">{error}</p>}
+
+      <ul className="task-list">
+        {tasks.map((task) => (
+          <li key={task.id}>
+            <strong>{task.title}</strong>
+            <span className="muted"> #{task.id}</span>
           </li>
         ))}
       </ul>
-    </div>
+
+      {!loading && !error && tasks.length === 0 && (
+        <p className="muted">No tasks returned by API.</p>
+      )}
+    </section>
   );
 }
