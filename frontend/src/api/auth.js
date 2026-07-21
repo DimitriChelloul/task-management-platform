@@ -14,8 +14,10 @@ export function clearToken() {
   localStorage.removeItem(TOKEN_KEY);
 }
 
-export async function login() {
-  const res = await fetch(`${API_BASE}/auth/login`, { method: "POST" });
+export async function login(email) {
+  const res = await fetch(`${API_BASE}/auth/login?email=${encodeURIComponent(email)}`, {
+    method: "POST",
+  });
   if (!res.ok) throw new Error("Login failed");
   const data = await res.json();
   if (!data.token) throw new Error("Token missing in response");

@@ -5,21 +5,21 @@ spring:
   application:
     name: user-service
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    consumer:
-      group-id: user-service-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
-kafka:
-  topics:
-    userCreated: user.created
+app:
+  kafka:
+    topics:
+      user-created: ${KAFKA_TOPIC_USER_CREATED:user.created}
+      task-created: ${KAFKA_TOPIC_TASK_CREATED:task.created}
+      task-completed: ${KAFKA_TOPIC_TASK_COMPLETED:task.completed}
+
+outbox:
+  poll-interval: 2s
+  batch-size: 50
 
 jwt:
   secret: "0123456789abcdef0123456789abcdef"

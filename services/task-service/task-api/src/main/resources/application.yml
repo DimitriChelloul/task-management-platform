@@ -1,14 +1,36 @@
+server:
+  port: 8083
+
 spring:
   application:
     name: task-service
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: task-service-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/tmp}
+    username: ${DATABASE_USERNAME:tmp}
+    password: ${DATABASE_PASSWORD:tmp}
 
-kafka:
-  topics:
-    userCreated: user.created
+app:
+  kafka:
+    topics:
+      user-created: ${KAFKA_TOPIC_USER_CREATED:user.created}
+      task-created: ${KAFKA_TOPIC_TASK_CREATED:task.created}
+      task-completed: ${KAFKA_TOPIC_TASK_COMPLETED:task.completed}
+
+outbox:
+  poll-interval: 2s
+  batch-size: 50
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

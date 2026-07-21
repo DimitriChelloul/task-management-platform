@@ -1,8 +1,9 @@
 package org.dimitri.user.config;
 
-import org.dimitri.user.application.usecase.CreateUserUseCase;
-import org.dimitri.user.application.ports.UserWritePort;
-import org.dimitri.user.application.ports.OutboxWritePort;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.dimitri.user.application.UserRepository;
+import org.dimitri.user.application.UserService;
+import org.dimitri.shared.outbox.OutboxPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,8 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class UserUseCaseConfig {
 
     @Bean
-    public CreateUserUseCase createUserUseCase(UserWritePort userWritePort,
-                                               OutboxWritePort outboxWritePort) {
-        return new CreateUserUseCase(userWritePort, outboxWritePort);
+    public UserService userService(UserRepository users, OutboxPort outbox, ObjectMapper objectMapper) {
+        return new UserService(users, outbox, objectMapper);
     }
 }

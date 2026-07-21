@@ -16,10 +16,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>task-api</module>
-        <module>task-application</module>
         <module>task-domain</module>
+        <module>task-application</module>
         <module>task-infrastructure</module>
+        <module>task-api</module>
     </modules>
 
 </project>

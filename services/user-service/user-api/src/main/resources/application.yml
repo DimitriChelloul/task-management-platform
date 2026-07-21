@@ -5,18 +5,15 @@ spring:
   application:
     name: user-service
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
   datasource:
-    url: jdbc:postgresql://localhost:5432/tmp
-    username: tmp
-    password: tmp
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/tmp}
+    username: ${DATABASE_USERNAME:tmp}
+    password: ${DATABASE_PASSWORD:tmp}
     driver-class-name: org.postgresql.Driver
-  profiles:
-    active: dev
-
 eureka:
   client:
     service-url:
@@ -27,10 +24,13 @@ jwt:
   issuer: "task-management"
   expiration-minutes: 120
 
-kafka:
-  topics:
-    userCreated: user.created
+app:
+  kafka:
+    topics:
+      user-created: ${KAFKA_TOPIC_USER_CREATED:user.created}
+      task-created: ${KAFKA_TOPIC_TASK_CREATED:task.created}
+      task-completed: ${KAFKA_TOPIC_TASK_COMPLETED:task.completed}
 
 outbox:
-  poll-interval-ms: 2000
+  poll-interval: 2s
   batch-size: 50

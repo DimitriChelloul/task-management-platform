@@ -15,10 +15,6 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users/**
-        - id: kafka-test-service
-          uri: lb://USER-SERVICE
-          predicates:
-            - Path=/kafka/**
         - id: task-service
           uri: lb://TASK-SERVICE
           predicates:

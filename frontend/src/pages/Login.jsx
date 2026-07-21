@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { clearToken, login } from "../api/auth";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
   const [token, setToken] = useState("");
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
@@ -10,7 +11,7 @@ export default function Login() {
     setLoading(true);
     setStatus("");
     try {
-      const newToken = await login();
+      const newToken = await login(email);
       setToken(newToken);
       setStatus("Login success. Token saved in localStorage.");
     } catch (e) {
@@ -29,9 +30,15 @@ export default function Login() {
   return (
     <section className="card">
       <h2>Login</h2>
-      <p className="muted">Calls POST /auth/login and stores JWT token.</p>
+      <p className="muted">Log in with an existing user email.</p>
+      <input
+        type="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+        placeholder="user@example.com"
+      />
       <div className="row">
-        <button onClick={onLogin} disabled={loading}>
+        <button onClick={onLogin} disabled={loading || !email.trim()}>
           {loading ? "Logging in..." : "Login"}
         </button>
         <button onClick={onLogout} className="ghost">

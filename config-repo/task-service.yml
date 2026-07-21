@@ -7,46 +7,33 @@ spring:
   
   # Database configuration (pour Lab 3)
   datasource:
-    url: jdbc:postgresql://localhost:5432/task_db
-    username: task_user
-    password: task_password
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/tmp}
+    username: ${DATABASE_USERNAME:tmp}
+    password: ${DATABASE_PASSWORD:tmp}
     driver-class-name: org.postgresql.Driver
   
-  jpa:
-    hibernate:
-      ddl-auto: validate  # Flyway gère les migrations
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-        use_sql_comments: true
-  
-  # Kafka configuration
   kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: task-service-group
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 # Kafka topics configuration
-kafka:
-  topics:
-    taskCreated: task.created
-    taskCompleted: task.completed
-    userCreated: user.created  # Listening for user events
+app:
+  kafka:
+    topics:
+      user-created: ${KAFKA_TOPIC_USER_CREATED:user.created}
+      task-created: ${KAFKA_TOPIC_TASK_CREATED:task.created}
+      task-completed: ${KAFKA_TOPIC_TASK_COMPLETED:task.completed}
 
-# JWT configuration (shared with user-service)
-jwt:
-  secret: "0123456789abcdef0123456789abcdef"
-  issuer: "task-management"
-  expiration-minutes: 120
+outbox:
+  poll-interval: 2s
+  batch-size: 50
 
 # Service discovery (Eureka)
 eureka:

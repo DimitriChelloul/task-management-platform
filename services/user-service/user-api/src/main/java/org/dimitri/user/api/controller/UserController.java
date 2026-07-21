@@ -1,26 +1,38 @@
 package org.dimitri.user.api.controller;
 
-import org.dimitri.user.domain.port.in.UserCommandPort;
+import org.dimitri.user.application.UserService;
+import org.dimitri.user.domain.User;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserCommandPort userCommandPort;
+    private final UserService users;
 
-    public UserController(UserCommandPort userCommandPort) {
-        this.userCommandPort = userCommandPort;
+    public UserController(UserService users) {
+        this.users = users;
+    }
+
+    @GetMapping
+    public List<User> list() {
+        return users.list();
+    }
+
+    @GetMapping("/{id}")
+    public User get(@PathVariable UUID id) {
+        return users.get(id);
     }
 
     @PostMapping
-    public Map<String, Object> create(@RequestParam String email) {
-        UUID id = userCommandPort.createUser(email);
-        return Map.of("id", id.toString(), "status", "created");
+    @ResponseStatus(HttpStatus.CREATED)
+    public User create(@RequestParam String email) {
+        return users.create(email);
     }
 }
 

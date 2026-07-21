@@ -1,10 +1,9 @@
 package org.dimitri.task.controller;
 
+import org.dimitri.task.application.TaskCommandService;
 import org.dimitri.task.domain.Task;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,11 +11,28 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
+    private final TaskCommandService tasks;
+
+    public TaskController(TaskCommandService tasks) {
+        this.tasks = tasks;
+    }
 
     @GetMapping
-    public ResponseEntity<List<Task>> list() {
-        // minimal stub: return an empty list or example
-        Task sample = new Task(UUID.randomUUID(), "Sample task");
-        return ResponseEntity.ok(List.of(sample));
+    public List<Task> list() {
+        return tasks.list();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Task create(@RequestBody CreateTaskRequest request) {
+        return tasks.create(request.title());
+    }
+
+    @PatchMapping("/{id}/complete")
+    public Task complete(@PathVariable UUID id) {
+        return tasks.complete(id);
+    }
+
+    public record CreateTaskRequest(String title) {
     }
 }

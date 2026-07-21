@@ -1,19 +1,21 @@
 package org.dimitri.user.infrastructure.jdbc;
 
 import org.dimitri.user.domain.User;
-import org.springframework.context.annotation.Profile;
+import org.dimitri.user.application.EmailAlreadyUsedException;
+import org.dimitri.user.application.UserRepository;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.dimitri.user.infrastructure.persistence.UserRepository;
-import org.dimitri.user.application.ports.UserWritePort;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-@Profile("jdbc")
-
-public class JdbcUserRepository
-        implements UserRepository, UserWritePort {
+public class JdbcUserRepository implements UserRepository {
 
     private final JdbcTemplate jdbc;
 
@@ -22,17 +24,38 @@ public class JdbcUserRepository
     }
 
     @Override
-    public void insert(User user) {
-        jdbc.update("""
-            INSERT INTO users(id, email, created_at)
-            VALUES (?, ?, ?)
-        """, user.id(), user.email(), Timestamp.from(user.createdAt()));
+    public void save(User user) {
+        try {
+            jdbc.update("""
+                INSERT INTO users(id, email, created_at)
+                VALUES (?, ?, ?)
+            """, user.id(), user.email(), Timestamp.from(user.createdAt()));
+        } catch (DuplicateKeyException exception) {
+            throw new EmailAlreadyUsedException(user.email());
+        }
     }
 
-    // Adapter vers le port métier
     @Override
-    public void save(User user) {
-        insert(user);
+    public List<User> findAll() {
+        return jdbc.query("SELECT id, email, created_at FROM users ORDER BY created_at DESC", this::map);
     }
+
+    @Override
+    public Optional<User> findById(UUID id) {
+        return jdbc.query("SELECT id, email, created_at FROM users WHERE id = ?", this::map, id)
+                .stream().findFirst();
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return jdbc.query("SELECT id, email, created_at FROM users WHERE LOWER(email) = ?", this::map, email)
+                .stream().findFirst();
+    }
+
+    private User map(ResultSet result, int rowNumber) throws SQLException {
+        return new User(result.getObject("id", UUID.class), result.getString("email"),
+                result.getTimestamp("created_at").toInstant());
+    }
+
 }
 
